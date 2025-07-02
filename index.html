@@ -91,8 +91,8 @@ const siteData = {
     contact: {
         siteAddress: "서울특별시 동작구 사당동 155-4",
         modelHouseAddress: "서울특별시 동작구 사당동 155-4",
-        mainPhoneNumber: "1577-7755",
-        royalPhoneNumber: "1533-9790",
+        mainPhoneNumber: "1555-2624",
+        royalPhoneNumber: "1555-2624",
         counselors: [
             { name: '김분양 상담사', phone: '010-5930-3064', imageKey: 'img_counselor_1' },
             { name: '이청약 상담사', phone: '010-6585-3392', imageKey: 'img_counselor_2' }
@@ -121,17 +121,15 @@ const siteData = {
             { icon: "fa-kit-medical", title: "가까운 의료", desc: "서울성모병원 인접" }, 
             { icon: "fa-leaf", title: "쾌적한 자연", desc: "사당솔밭공원, 현충공원" } 
         ], special: { title: "강남 직통 생활권", desc: "서리풀터널 개통으로 더욱 빨라진 강남" } },
-        subscription: { title: "", subtitle: "" },
-        succession: { title: "", subtitle: "" },
-        marketPrice: { title: "", subtitle: "", note: "", chartData: { labels: [], data: [] } },
-        unitA: { title: "44 TYPE", subtitle: "효율적인 공간 구성의 실속 평면", features: ["침실 2", "욕실 1", "컴팩트한 구조"] },
-        unitB: { title: "49 TYPE", subtitle: "신혼부부에게 안성맞춤인 구조", features: ["침실 2", "욕실 1", "넓은 거실"] },
-        unitC: { title: "59A TYPE", subtitle: "가장 선호도 높은 3BAY 판상형", features: ["침실 3", "욕실 2", "맞통풍 구조"] },
-        unitD: { title: "59B TYPE", subtitle: "개방감과 조망을 극대화한 타워형", features: ["침실 3", "욕실 2", "2면 개방"] },
-        unitE: { title: "84A TYPE", subtitle: "넉넉한 수납공간의 4BAY 판상형", features: ["침실 3+α", "욕실 2", "대형 드레스룸"] },
-        unitF: { title: "84B TYPE", subtitle: "라이프스타일에 맞춘 다양한 공간", features: ["침실 3", "욕실 2", "알파룸"] },
-        unitG: { title: "84C TYPE", subtitle: "독립적인 공간 구성의 타워형", features: ["침실 3", "욕실 2", "분리형 구조"] },
-        unitH: { title: "84D TYPE", subtitle: "최상의 개방감을 선사하는 평면", features: ["침실 3", "욕실 2", "광폭 거실"] },
+        marketPrice: { title: "주변 시세 비교", subtitle: "인근 단지 대비 뛰어난 가격 경쟁력", note: "※ 84㎡, 최근 실거래가 기준 (2025.07)", chartData: { labels: ['이수역리가', '래미안로이파크', '이수스위첸포레힐즈', '힐스테이트(예상)'], data: [17.5, 18.2, 16.8, 17.0] } },
+        unitA: { title: "44㎡", subtitle: "효율적인 공간 구성의 실속 평면", features: [{icon: "fa-bed", text: "침실 2"}, {icon: "fa-bath", text: "욕실 1"}, {icon: "fa-cube", text: "컴팩트 구조"}] },
+        unitB: { title: "49㎡", subtitle: "신혼부부에게 안성맞춤인 구조", features: [{icon: "fa-bed", text: "침실 2"}, {icon: "fa-bath", text: "욕실 1"}, {icon: "fa-house-chimney-window", text: "넓은 거실"}] },
+        unitC: { title: "59A㎡", subtitle: "가장 선호도 높은 3BAY 판상형", features: [{icon: "fa-bed", text: "침실 3"}, {icon: "fa-bath", text: "욕실 2"}, {icon: "fa-wind", text: "맞통풍 구조"}] },
+        unitD: { title: "59B㎡", subtitle: "개방감과 조망을 극대화한 타워형", features: [{icon: "fa-bed", text: "침실 3"}, {icon: "fa-bath", text: "욕실 2"}, {icon: "fa-mountain-sun", text: "2면 개방"}] },
+        unitE: { title: "84A㎡", subtitle: "넉넉한 수납공간의 4BAY 판상형", features: [{icon: "fa-bed", text: "침실 3+α"}, {icon: "fa-bath", text: "욕실 2"}, {icon: "fa-person-shelter", text: "대형 드레스룸"}] },
+        unitF: { title: "84B㎡", subtitle: "라이프스타일에 맞춘 다양한 공간", features: [{icon: "fa-bed", text: "침실 3"}, {icon: "fa-bath", text: "욕실 2"}, {icon: "fa-plus", text: "알파룸"}] },
+        unitG: { title: "84C㎡", subtitle: "독립적인 공간 구성의 타워형", features: [{icon: "fa-bed", text: "침실 3"}, {icon: "fa-bath", text: "욕실 2"}, {icon: "fa-people-arrows", text: "분리형 구조"}] },
+        unitH: { title: "84D㎡", subtitle: "최상의 개방감을 선사하는 평면", features: [{icon: "fa-bed", text: "침실 3"}, {icon: "fa-bath", text: "욕실 2"}, {icon: "fa-maximize", text: "광폭 거실"}] },
         directions: { title: "오시는 길", subtitle: "모델하우스에서 힐스테이트의 가치를 직접 확인하세요." }
     }
 };
@@ -180,14 +178,16 @@ const siteData = {
             
             <div class="page" data-page-name="lifeInfra"><h2 class="section-title" data-content="lifeInfra.title"></h2><p class="section-subtitle" data-content="lifeInfra.subtitle"></p><div class="space-y-3" id="life-infra-list"></div><div class="bg-orange-100 p-4 rounded-lg flex items-center space-x-4 mt-6"><div class="text-orange-600 shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div><div><h4 class="font-bold text-orange-800" data-content="lifeInfra.special.title"></h4><p class="text-sm text-orange-700" data-content="lifeInfra.special.desc"></p></div></div></div>
             
-            <div class="page" data-page-name="unitA"><h2 class="section-title" data-content="unitA.title"></h2><p class="section-subtitle" data-content="unitA.subtitle"></p><img data-src="img_unit_A" alt="A타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitA"></div></div>
-            <div class="page" data-page-name="unitB"><h2 class="section-title" data-content="unitB.title"></h2><p class="section-subtitle" data-content="unitB.subtitle"></p><img data-src="img_unit_B" alt="B타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitB"></div></div>
-            <div class="page" data-page-name="unitC"><h2 class="section-title" data-content="unitC.title"></h2><p class="section-subtitle" data-content="unitC.subtitle"></p><img data-src="img_unit_C" alt="C타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitC"></div></div>
-            <div class="page" data-page-name="unitD"><h2 class="section-title" data-content="unitD.title"></h2><p class="section-subtitle" data-content="unitD.subtitle"></p><img data-src="img_unit_D" alt="D타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitD"></div></div>
-            <div class="page" data-page-name="unitE"><h2 class="section-title" data-content="unitE.title"></h2><p class="section-subtitle" data-content="unitE.subtitle"></p><img data-src="img_unit_E" alt="E타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitE"></div></div>
-            <div class="page" data-page-name="unitF"><h2 class="section-title" data-content="unitF.title"></h2><p class="section-subtitle" data-content="unitF.subtitle"></p><img data-src="img_unit_F" alt="F타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitF"></div></div>
-            <div class="page" data-page-name="unitG"><h2 class="section-title" data-content="unitG.title"></h2><p class="section-subtitle" data-content="unitG.subtitle"></p><img data-src="img_unit_G" alt="G타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitG"></div></div>
-            <div class="page" data-page-name="unitH"><h2 class="section-title" data-content="unitH.title"></h2><p class="section-subtitle" data-content="unitH.subtitle"></p><img data-src="img_unit_H" alt="H타입 평면도" class="w-full h-auto rounded-md shadow-lg"><div class="grid grid-cols-3 gap-2 text-center mt-3" data-features="unitH"></div></div>
+            <div class="page" data-page-name="marketPrice"><h2 class="section-title" data-content="marketPrice.title"></h2><p class="section-subtitle" data-content="marketPrice.subtitle"></p><div class="w-full h-3/4 min-h-[300px]"><canvas id="priceChart"></canvas></div><p class="text-center mt-4 text-sm text-gray-500" data-content="marketPrice.note"></p></div>
+
+            <div class="page" data-page-name="unitA"><h2 class="section-title" data-content="unitA.title"></h2><p class="section-subtitle" data-content="unitA.subtitle"></p><img data-src="img_unit_A" alt="A타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitA"></div></div>
+            <div class="page" data-page-name="unitB"><h2 class="section-title" data-content="unitB.title"></h2><p class="section-subtitle" data-content="unitB.subtitle"></p><img data-src="img_unit_B" alt="B타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitB"></div></div>
+            <div class="page" data-page-name="unitC"><h2 class="section-title" data-content="unitC.title"></h2><p class="section-subtitle" data-content="unitC.subtitle"></p><img data-src="img_unit_C" alt="C타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitC"></div></div>
+            <div class="page" data-page-name="unitD"><h2 class="section-title" data-content="unitD.title"></h2><p class="section-subtitle" data-content="unitD.subtitle"></p><img data-src="img_unit_D" alt="D타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitD"></div></div>
+            <div class="page" data-page-name="unitE"><h2 class="section-title" data-content="unitE.title"></h2><p class="section-subtitle" data-content="unitE.subtitle"></p><img data-src="img_unit_E" alt="E타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitE"></div></div>
+            <div class="page" data-page-name="unitF"><h2 class="section-title" data-content="unitF.title"></h2><p class="section-subtitle" data-content="unitF.subtitle"></p><img data-src="img_unit_F" alt="F타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitF"></div></div>
+            <div class="page" data-page-name="unitG"><h2 class="section-title" data-content="unitG.title"></h2><p class="section-subtitle" data-content="unitG.subtitle"></p><img data-src="img_unit_G" alt="G타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitG"></div></div>
+            <div class="page" data-page-name="unitH"><h2 class="section-title" data-content="unitH.title"></h2><p class="section-subtitle" data-content="unitH.subtitle"></p><img data-src="img_unit_H" alt="H타입 평면도" class="w-full h-auto rounded-md shadow-lg mb-4"><div class="grid grid-cols-3 gap-2 text-center" data-features="unitH"></div></div>
             
             <div class="page" data-page-name="directions"><div class="text-center"><h2 class="section-title" data-content="directions.title"></h2><p class="text-gray-600 text-base mb-4" data-content="directions.subtitle"></p><a data-href="modelHouseMap" target="_blank" class="block w-full h-48 md:h-64 rounded-lg overflow-hidden shadow-lg relative"><iframe data-src-embed="modelHouseMapEmbed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="absolute inset-0 bg-transparent"></div></a><p class="text-sm text-gray-500 mt-2">지도를 클릭하시면 길찾기 서비스로 연결됩니다.</p><p class="text-base font-bold mt-2" data-content="contact.modelHouseAddress"></p><p class="text-xl font-bold mt-2 text-indigo-600" data-tel="mainPhoneNumber"></p></div></div>
         </div>
@@ -250,8 +250,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const unitKey = el.dataset.features;
             const unitData = siteData.pageContents[unitKey];
             if(unitData && unitData.features && unitData.features.length > 0) {
+                el.innerHTML = ''; // Clear previous features
                 unitData.features.forEach(feature => {
-                    el.innerHTML += `<div class="bg-gray-100 p-2 rounded-lg text-sm shadow-sm">${feature}</div>`;
+                    el.innerHTML += `<div class="bg-gray-100 p-3 rounded-lg text-sm shadow-sm flex flex-col items-center justify-center"><i class="fa-solid ${feature.icon} text-indigo-500 mb-1 text-lg"></i><span>${feature.text}</span></div>`;
                 });
             }
         });
@@ -309,8 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const visiblePages = pages.filter(page => {
             const pageName = page.dataset.pageName;
             const data = getNestedValue(`pageContents.${pageName}`);
-            if (data && data.title) return true;
-            return false;
+            return data && data.title;
         });
 
         pages.forEach(p => { 
@@ -318,15 +318,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let currentPageIndex = 0;
+        let chartRendered = false;
+
         function showPage(index) {
             const oldPageIndex = currentPageIndex;
             currentPageIndex = index;
             visiblePages.forEach((page, i) => {
                 page.classList.remove('active', 'exiting');
-                if (i === index) setTimeout(() => page.classList.add('active'), 50);
-                else if (i === oldPageIndex) page.classList.add('exiting');
+                if (i === index) {
+                     setTimeout(() => page.classList.add('active'), 50);
+                }
+                else if (i === oldPageIndex) {
+                    page.classList.add('exiting');
+                }
             });
             updateNavigation();
+            
+            const chartPage = visiblePages[index];
+            if (chartPage && chartPage.dataset.pageName === "marketPrice" && !chartRendered) {
+                renderPriceChart();
+                chartRendered = true;
+            }
         }
 
         function updateNavigation() {
@@ -334,6 +346,35 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('progress-bar').style.width = `${progress}%`;
             document.getElementById('prev-btn').disabled = currentPageIndex === 0;
             document.getElementById('next-btn').disabled = currentPageIndex === visiblePages.length - 1;
+        }
+
+        function renderPriceChart() {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            const chartConfig = siteData.pageContents.marketPrice.chartData;
+            if (!chartConfig || !chartConfig.labels || !chartConfig.data || chartConfig.data.length === 0) {
+                document.querySelector('[data-page-name="marketPrice"]').classList.add('hidden');
+                return;
+            };
+            const backgroundColors = chartConfig.labels.map(label => label.includes('(예상)') ? 'rgba(239, 68, 68, 0.7)' : 'rgba(59, 130, 246, 0.7)');
+            const borderColors = chartConfig.labels.map(label => label.includes('(예상)') ? 'rgba(239, 68, 68, 1)' : 'rgba(59, 130, 246, 1)');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartConfig.labels,
+                    datasets: [{
+                        label: '84㎡ 실거래가 (억원)', data: chartConfig.data,
+                        backgroundColor: backgroundColors,
+                        borderColor: borderColors,
+                        borderWidth: 1, borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, animation: { duration: 1500, easing: 'easeInOutQuart' },
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${c.raw}억원` }}},
+                    scales: { y: { beginAtZero: false, min: Math.floor(Math.min(...chartConfig.data) - 2), title: { display: true, text: '실거래가 (단위: 억원)' } } }
+                }
+            });
         }
 
         document.getElementById('next-btn').addEventListener('click', () => { if (currentPageIndex < visiblePages.length - 1) showPage(currentPageIndex + 1); });
