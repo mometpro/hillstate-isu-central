@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title and meta tags will be set dynamically -->
-    <title></title>
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-    <link rel="icon" href="" type="image/png">
+    
+    <!-- Title and Meta Tags - Set Statically for crawlers -->
+    <title>힐스테이트 이수역 센트럴 | 인터랙티브 브로슈어</title>
+    <meta property="og:title" content="힐스테이트 이수역 센트럴 | 인터랙티브 브로슈어">
+    <meta property="og:description" content="강남 생활권의 중심, 힐스테이트 이수역 센트럴의 모든 것을 확인해보세요.">
+    <!-- IMPORTANT: The 'content' and 'href' below MUST be absolute URLs (e.g., https://...) for them to work correctly. -->
+    <meta property="og:image" content="img_og_banner.jpg">
+    <link rel="icon" href="img_favicon.jpg" type="image/jpeg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
@@ -163,7 +166,7 @@ const siteData = {
         </div>
         
         <div id="page-container">
-            <div class="page active flex flex-col justify-center items-center" data-page-name="cover">
+            <div class="page" data-page-name="cover">
                 <div class="w-full max-w-md rounded-lg overflow-hidden shadow-lg mb-4"><img data-src="img_cover_video_thumb" alt="현장 전경" class="w-full h-auto"></div>
                 <div class="text-center px-2 leading-relaxed"><p class="font-semibold text-gray-800 text-lg md:text-xl" data-content="cover.description"></p></div>
             </div>
@@ -210,12 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getNestedValue = (path, obj = siteData) => path.split('.').reduce((o, k) => (o && o[k] != null) ? o[k] : null, obj);
 
     function populateContent() {
-        document.title = `${siteData.projectName} | 인터랙티브 브로슈어`;
-        document.querySelector('meta[property="og:title"]').setAttribute('content', `${siteData.projectName} | 인터랙티브 브로슈어`);
-        document.querySelector('meta[property="og:description"]').setAttribute('content', siteData.projectDescription);
-        if (siteData.images.img_og_banner) document.querySelector('meta[property="og:image"]').setAttribute('content', siteData.images.img_og_banner);
-        if (siteData.images.img_favicon) document.querySelector('link[rel="icon"]').setAttribute('href', siteData.images.img_favicon);
-
+        // Static meta tags are already in the HTML head
         document.querySelectorAll('[data-content]').forEach(el => {
             const path = el.dataset.content.includes('contact.') ? el.dataset.content : `pageContents.${el.dataset.content}`;
             const value = getNestedValue(path);
@@ -250,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const unitKey = el.dataset.features;
             const unitData = siteData.pageContents[unitKey];
             if(unitData && unitData.features && unitData.features.length > 0) {
-                el.innerHTML = ''; // Clear previous features
+                el.innerHTML = ''; 
                 unitData.features.forEach(feature => {
                     el.innerHTML += `<div class="bg-gray-100 p-3 rounded-lg text-sm shadow-sm flex flex-col items-center justify-center"><i class="fa-solid ${feature.icon} text-indigo-500 mb-1 text-lg"></i><span>${feature.text}</span></div>`;
                 });
@@ -355,8 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('[data-page-name="marketPrice"]').classList.add('hidden');
                 return;
             };
-            const backgroundColors = chartConfig.labels.map(label => label.includes('(예상)') ? 'rgba(239, 68, 68, 0.7)' : 'rgba(59, 130, 246, 0.7)');
-            const borderColors = chartConfig.labels.map(label => label.includes('(예상)') ? 'rgba(239, 68, 68, 1)' : 'rgba(59, 130, 246, 1)');
+            const backgroundColors = chartConfig.labels.map(label => label.includes('(예상)') ? 'rgba(239, 68, 68, 0.7)' : 'rgba(156, 163, 175, 0.7)');
+            const borderColors = chartConfig.labels.map(label => label.includes('(예상)') ? 'rgba(239, 68, 68, 1)' : 'rgba(156, 163, 175, 1)');
+            backgroundColors[backgroundColors.length - 1] = 'rgba(59, 130, 246, 0.7)'; // Highlight last bar
+            borderColors[borderColors.length - 1] = 'rgba(59, 130, 246, 1)'; // Highlight last bar
 
             new Chart(ctx, {
                 type: 'bar',
