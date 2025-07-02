@@ -10,7 +10,7 @@
     <meta property="og:description" content="강남 생활권의 중심, 힐스테이트 이수역 센트럴의 모든 것을 확인해보세요.">
     <!-- Corrected image paths for OG and Favicon with relative paths -->
     <meta property="og:image" content="img_og_banner.jpg">
-    <link rel="icon" href="img_favicon.jpg" type="image/png">
+    <link rel="icon" href="img_favicon.jpg" type="image/jpeg">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -57,17 +57,13 @@ const siteData = {
     projectDescription: "강남 생활권의 중심, 힐스테이트 이수역 센트럴의 모든 것을 확인해보세요.",
     googleSheetUrl: "https://script.google.com/macros/s/AKfycbwhlggC31OP9TUCD3Bq0Hr4wtELbfMyRey2ugXoWXEILDCE-MTlbhXUHsA2qUw2GH8nyw/exec",
 
-    // --- 2. 이미지 정보 (고정 + 현장별) ---
+    // --- 2. 이미지 정보 ---
     images: {
         img_logo_landing: "boonyangcok(c).png",
         img_logo_brochure: "boonyangcok.png",
-        img_logo_apart: "img_logo_apart.png",
+        img_logo_apart: "img_logo_apt.png",
         img_cover_video_thumb: "img_cover_video_thumb.jpg",
         img_location_map: "img_location_map.webp",
-        img_premium_points: "",
-        img_education_special: "",
-        img_subscription_result: "",
-        img_rights_succession: "",
         img_unit_A: "img_unit_A.webp",
         img_unit_B: "img_unit_B.webp",
         img_unit_C: "img_unit_C.webp",
@@ -163,9 +159,10 @@ const siteData = {
         </div>
         
         <div id="page-container">
-            <div class="page flex flex-col" data-page-name="cover" style="padding: 0; justify-content: center; text-align: center; background-size: cover; background-position: center;">
-                <div class="absolute inset-0 bg-black/50"></div>
-                <div class="relative z-10 p-6 flex flex-col items-center">
+            <div class="page flex flex-col relative" data-page-name="cover" style="padding: 0; justify-content: center; text-align: center;">
+                <div class="absolute inset-0 bg-black/50 z-10"></div>
+                <img data-src="img_cover_video_thumb" class="absolute inset-0 w-full h-full object-cover">
+                <div class="relative z-20 p-6 flex flex-col items-center">
                     <img data-src="img_logo_apart" alt="아파트 로고" class="h-10 mb-4">
                     <p class="font-semibold text-white text-xl md:text-2xl" data-content="cover.description"></p>
                 </div>
@@ -230,8 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Cover page background
         const coverPage = document.querySelector('[data-page-name="cover"]');
+        const coverImage = coverPage.querySelector('img[data-src="img_cover_video_thumb"]');
         if (coverPage && siteData.images.img_cover_video_thumb) {
-            coverPage.style.backgroundImage = `url(${siteData.images.img_cover_video_thumb})`;
+            // This logic is now handled by the HTML structure itself to prevent zooming.
         }
 
         document.querySelectorAll('[data-infographic]').forEach(el => {
