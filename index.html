@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Title and Meta Tags - Reverted to original relative path structure -->
     <title>힐스테이트 이수역 센트럴 | 인터랙티브 브로슈어</title>
     <meta property="og:title" content="힐스테이트 이수역 센트럴 | 인터랙티브 브로슈어">
     <meta property="og:description" content="강남 생활권의 중심, 힐스테이트 이수역 센트럴의 모든 것을 확인해보세요.">
@@ -60,7 +59,7 @@ const siteData = {
     images: {
         img_logo_landing: "boonyangcok(c).png",
         img_logo_brochure: "boonyangcok.png",
-        img_logo_apart: "img_logo_apart.png",
+        img_logo_apart: "img_logo_apt.png",
         img_cover_video_thumb: "img_cover_video_thumb.jpg",
         img_location_map: "img_location_map.webp",
         img_unit_A: "img_unit_A.webp",
@@ -130,7 +129,6 @@ const siteData = {
 };
 </script>
 
-<!-- HTML & JS Logic -->
 <div id="landing-page" class="app-container">
     <div class="content-viewer p-6 md:p-8 flex flex-col">
         <div class="text-center mb-6"><img data-src="img_logo_landing" alt="로고" class="h-12 mx-auto mb-4 rounded-lg"></div>
@@ -320,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
             visiblePages.forEach((page, i) => {
                 page.classList.remove('active', 'exiting');
                 if (i === index) {
-                     setTimeout(() => page.classList.add('active'), 50);
+                    setTimeout(() => page.classList.add('active'), 50);
                 }
                 else if (i === oldPageIndex) {
                     page.classList.add('exiting');
