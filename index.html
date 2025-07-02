@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Title and Meta Tags - Set Statically for crawlers -->
+    <!-- Title and Meta Tags - Set Statically for crawlers with relative paths -->
     <title>힐스테이트 이수역 센트럴 | 인터랙티브 브로슈어</title>
     <meta property="og:title" content="힐스테이트 이수역 센트럴 | 인터랙티브 브로슈어">
     <meta property="og:description" content="강남 생활권의 중심, 힐스테이트 이수역 센트럴의 모든 것을 확인해보세요.">
-    <!-- Corrected image paths for OG and Favicon with relative paths -->
     <meta property="og:image" content="img_og_banner.jpg">
     <link rel="icon" href="img_favicon.jpg" type="image/jpeg">
 
@@ -159,13 +158,10 @@ const siteData = {
         </div>
         
         <div id="page-container">
-            <div class="page flex flex-col relative" data-page-name="cover" style="padding: 0; justify-content: center; text-align: center;">
-                <div class="absolute inset-0 bg-black/50 z-10"></div>
-                <img data-src="img_cover_video_thumb" class="absolute inset-0 w-full h-full object-cover">
-                <div class="relative z-20 p-6 flex flex-col items-center">
-                    <img data-src="img_logo_apart" alt="아파트 로고" class="h-10 mb-4">
-                    <p class="font-semibold text-white text-xl md:text-2xl" data-content="cover.description"></p>
-                </div>
+            <div class="page flex flex-col justify-center items-center" data-page-name="cover">
+                <img data-src="img_cover_video_thumb" alt="현장 전경" class="w-full max-w-md rounded-lg shadow-lg mb-4">
+                <img data-src="img_logo_apart" alt="아파트 로고" class="h-8 my-2">
+                <p class="font-semibold text-gray-800 text-lg md:text-xl text-center" data-content="cover.description"></p>
             </div>
 
             <div class="page" data-page-name="location"><h2 class="section-title" data-content="location.title"></h2><p class="section-subtitle" data-content="location.subtitle"></p><img data-src="img_location_map" alt="입지" class="w-full h-auto rounded-lg shadow-md mb-4"><div class="space-y-2"><div class="text-center bg-gray-50 p-3 rounded-lg shadow-sm"><p class="font-bold text-gray-800 text-sm md:text-base">사업지 주소</p><p class="text-xs md:text-sm text-gray-600" data-content="contact.siteAddress"></p></div><div class="text-center bg-indigo-50 p-3 rounded-lg shadow-sm"><p class="font-bold text-indigo-800 text-sm md:text-base">핵심 입지</p><p class="text-xs md:text-sm text-indigo-600" data-content="location.coreLocation"></p></div></div></div>
@@ -225,13 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-tel]').forEach(el => { if(siteData.contact[el.dataset.tel]) el.textContent = `T. ${siteData.contact[el.dataset.tel]}`; });
         document.querySelectorAll('[data-tel-href]').forEach(el => { if(siteData.contact[el.dataset.telHref]) el.href = `tel:${siteData.contact[el.dataset.telHref]}`; });
         
-        // Cover page background
-        const coverPage = document.querySelector('[data-page-name="cover"]');
-        const coverImage = coverPage.querySelector('img[data-src="img_cover_video_thumb"]');
-        if (coverPage && siteData.images.img_cover_video_thumb) {
-            // This logic is now handled by the HTML structure itself to prevent zooming.
-        }
-
         document.querySelectorAll('[data-infographic]').forEach(el => {
             const key = el.dataset.infographic;
             const data = siteData.pageContents[key];
