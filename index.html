@@ -9,8 +9,8 @@
     <meta property="og:title" content="힐스테이트 이수역 센트럴 | 인터랙티브 브로슈어">
     <meta property="og:description" content="강남 생활권의 중심, 힐스테이트 이수역 센트럴의 모든 것을 확인해보세요.">
     <!-- IMPORTANT: The 'content' and 'href' below MUST be absolute URLs (e.g., https://...) for them to work correctly. -->
-    <meta property="og:image" content="img_og_banner.jpg">
-    <link rel="icon" href="img_favicon.jpg" type="image/jpeg">
+    <meta property="og:image" content="https://i.imgur.com/E2W0s2W.png">
+    <link rel="icon" href="https://i.imgur.com/Kq2w6vV.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -59,12 +59,13 @@ const siteData = {
 
     // --- 2. 이미지 정보 (고정 + 현장별) ---
     images: {
-        // 고정 이미지
+        // 고정 이미지 (JS에서는 사용하지 않지만, 참조용으로 남겨둠)
         img_favicon: "img_favicon.jpg",
         img_og_banner: "img_og_banner.jpg",
+        // 현장별 이미지
         img_logo_landing: "boonyangcok(c).png",
         img_logo_brochure: "boonyangcok.png",
-        // 현장별 이미지
+        img_logo_apart: "img_logo_apart.png",
         img_cover_video_thumb: "img_cover_video_thumb.webp",
         img_location_map: "img_location_map.webp",
         img_premium_points: "",
@@ -104,7 +105,7 @@ const siteData = {
 
     // --- 5. 페이지별 콘텐츠 ---
     pageContents: {
-        cover: { title: "표지", description: "강남을 더 가깝게 누리는 브랜드 타운의 중심<br>힐스테이트 이수역 센트럴" },
+        cover: { title: "표지", description: "강남을 더 가깝게 누리는 브랜드 타운의 중심" },
         location: { title: "트리플 역세권", subtitle: "강남과 도심을 잇는 교통의 요지", coreLocation: "4, 7호선 이수역, 7호선 남성역 트리플 역세권" },
         premium: { title: "힐스테이트 프리미엄", subtitle: "차이가 클래스를 만드는 브랜드 가치", features: [
             { icon: "fa-train-subway", title: "트리플 역세권", desc: "4/7호선 이수역, 7호선 남성역 인접" },
@@ -166,9 +167,12 @@ const siteData = {
         </div>
         
         <div id="page-container">
-            <div class="page" data-page-name="cover">
-                <div class="w-full max-w-md rounded-lg overflow-hidden shadow-lg mb-4"><img data-src="img_cover_video_thumb" alt="현장 전경" class="w-full h-auto"></div>
-                <div class="text-center px-2 leading-relaxed"><p class="font-semibold text-gray-800 text-lg md:text-xl" data-content="cover.description"></p></div>
+            <div class="page flex flex-col" data-page-name="cover" style="padding: 0; justify-content: center; text-align: center; background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-black/50"></div>
+                <div class="relative z-10 p-6 flex flex-col items-center">
+                    <img data-src="img_logo_apart" alt="아파트 로고" class="h-10 mb-4">
+                    <p class="font-semibold text-white text-xl md:text-2xl" data-content="cover.description"></p>
+                </div>
             </div>
 
             <div class="page" data-page-name="location"><h2 class="section-title" data-content="location.title"></h2><p class="section-subtitle" data-content="location.subtitle"></p><img data-src="img_location_map" alt="입지" class="w-full h-auto rounded-lg shadow-md mb-4"><div class="space-y-2"><div class="text-center bg-gray-50 p-3 rounded-lg shadow-sm"><p class="font-bold text-gray-800 text-sm md:text-base">사업지 주소</p><p class="text-xs md:text-sm text-gray-600" data-content="contact.siteAddress"></p></div><div class="text-center bg-indigo-50 p-3 rounded-lg shadow-sm"><p class="font-bold text-indigo-800 text-sm md:text-base">핵심 입지</p><p class="text-xs md:text-sm text-indigo-600" data-content="location.coreLocation"></p></div></div></div>
@@ -213,18 +217,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const getNestedValue = (path, obj = siteData) => path.split('.').reduce((o, k) => (o && o[k] != null) ? o[k] : null, obj);
 
     function populateContent() {
-        // Static meta tags are already in the HTML head
+        // Dynamic content population
         document.querySelectorAll('[data-content]').forEach(el => {
             const path = el.dataset.content.includes('contact.') ? el.dataset.content : `pageContents.${el.dataset.content}`;
             const value = getNestedValue(path);
             if(value) el.innerHTML = value;
         });
-        document.querySelectorAll('[data-src]').forEach(el => { if(siteData.images[el.dataset.src]) el.src = siteData.images[el.dataset.src]; });
+        document.querySelectorAll('[data-src]').forEach(el => { 
+            const src = siteData.images[el.dataset.src];
+            if(src) el.src = src; 
+        });
         document.querySelectorAll('[data-href]').forEach(el => { if(siteData.links[el.dataset.href]) el.href = siteData.links[el.dataset.href]; });
         document.querySelectorAll('[data-src-embed]').forEach(el => { if(siteData.links[el.dataset.srcEmbed]) el.src = siteData.links[el.dataset.srcEmbed]; });
         document.querySelectorAll('[data-tel]').forEach(el => { if(siteData.contact[el.dataset.tel]) el.textContent = `T. ${siteData.contact[el.dataset.tel]}`; });
         document.querySelectorAll('[data-tel-href]').forEach(el => { if(siteData.contact[el.dataset.telHref]) el.href = `tel:${siteData.contact[el.dataset.telHref]}`; });
         
+        // Cover page background
+        const coverPage = document.querySelector('[data-page-name="cover"]');
+        if (coverPage && siteData.images.img_cover_video_thumb) {
+            coverPage.style.backgroundImage = `url(${siteData.images.img_cover_video_thumb})`;
+        }
+
         document.querySelectorAll('[data-infographic]').forEach(el => {
             const key = el.dataset.infographic;
             const data = siteData.pageContents[key];
@@ -380,7 +393,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('next-btn').addEventListener('click', () => { if (currentPageIndex < visiblePages.length - 1) showPage(currentPageIndex + 1); });
         document.getElementById('prev-btn').addEventListener('click', () => { if (currentPageIndex > 0) showPage(currentPageIndex - 1); });
 
-        showPage(0);
+        // Set initial page to be visible
+        const initialPage = document.querySelector('#page-container > .page');
+        if(initialPage) initialPage.classList.add('active');
+        updateNavigation();
     }
 
     populateContent();
